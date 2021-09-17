@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-require("dotenv").config();
+console.log("__dirname", __dirname);
+require("dotenv").config({ path: __dirname + "/.env" });
 
 mongoose.connect(
   process.env.mongoURI,

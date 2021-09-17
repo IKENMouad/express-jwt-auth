@@ -1,0 +1,162 @@
+// Fonts
+@import 'https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900';
+
+// Variables
+$font: 'Lato', sans-serif;
+
+// Colors
+$onyx: #3E363F;
+$cinnabar: #DD403A;
+$cosmiclatte: #FFFCE8;
+
+// Styles
+body {
+	background-image: url(https://unsplash.it/1400/799);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: $onyx;
+	font-family: $font;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.App {
+	align-items: center;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	width: 100vw;
+	position: absolute;
+	top: 0; left: 0;
+}
+
+.Modal {
+	background: $onyx;
+	border-radius: 2px;
+	padding: 20px;
+	width: 200px;
+}
+
+// Inputs
+.Input {
+	display: flex;
+	flex-direction: row-reverse;
+	border-bottom: 1px solid rgba($cosmiclatte, .1);
+	padding-bottom: 3px;
+	margin-bottom: 5px;
+	
+	input {
+		// General styles
+		outline: none;
+		border: 0;
+		color: $cosmiclatte;
+		background: transparent;
+		font-family: $font;
+		flex: 1 0 auto;
+		font-size: 14px;
+		font-weight: 300;
+		
+		// Animation triggers
+		&:focus ~ label {
+			opacity: 1;
+		}
+		
+		// Icon abstractions
+		&[type='text'] {
+			~ label {
+				&::before {
+					content: "\f007";	
+				}
+			}
+		}
+		&[type='email'] {
+			~ label {
+				&::before {
+					content: "\f1fa";
+				}
+			}
+		}
+		&[type='password'] {
+			~ label {
+				&::before {
+					content: "\f023";	
+				}
+			}
+		}
+	}
+	
+	label {
+		font-family: FontAwesome;
+		font-size: 13px;
+		opacity: .1;
+		transition: opacity .5s ease;
+		
+		&::before {
+			align-items: center;
+			color: $cosmiclatte;
+			display: flex;
+			height: 30px;
+			justify-content: center;
+			width: 30px;
+		}
+	}
+}
+
+// Button
+button {
+	align-items: center;
+	background: $cinnabar;
+	border: 0;
+	border-radius: 3px;
+	color: white;
+	display: flex;
+	
+	font-family: $font;
+	font-size: 13px;
+	font-weight: 500;
+	justify-content: center;
+	margin-top: 20px;
+	outline: none;
+	padding: 10px 9px 10px 11px;
+	text-transform: uppercase;
+	width: 100%;
+	
+	.fa {
+		font-size: 12px;
+		margin-left: auto;
+		position: relative;
+		top: 1px;
+	}
+	
+	&:hover {
+		transform: scale(1.02);
+	}
+	
+	&:active {
+		transform: scale(.99);
+	}
+}
+
+// Animation Classes
+.example-enter {
+	margin-top: 30px;
+	opacity: .01;
+	
+	&.example-enter-active {
+		margin-top: 0px;
+		opacity: 1;
+		transition: opacity .5s ease, margin .5s ease;
+	}
+}
+
+.example-leave {
+	margin-top: 0px;	
+	opacity: 1;
+	
+	&.example-leave-active {
+		margin-top: -30px;
+		opacity: .01;
+		transition: opacity .3s ease, margin .5s ease;
+	}
+}
