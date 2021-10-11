@@ -1,5 +1,7 @@
 const initState = {
   counter: 0,
+  buttonClicked: 'no',
+  modalOpen: 'no'
 };
 
 const AuthReducer = (state = initState, action) => {
