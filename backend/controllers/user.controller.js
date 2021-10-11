@@ -2,7 +2,9 @@ const User = require("../models/User");
 
 const fetchUsers = async (req, res) => {
   const users = await User.find({});
-  return res.status(200).send({ users, total: users.length });
+  return res
+    .status(200)
+    .send({ users, total: users.length,  });
 };
 
 const fetchUser = async (req, res) => {

@@ -29,11 +29,16 @@ const login = async (req, res) => {
     if (user) {
       const isPassMatch = await bcrypt.compare(password, user.password);
       if (isPassMatch) {
-        const token = jwt.sign({ id: user._id }, process.env.secret);
+        const userSubject = {
+          email: user.email,
+          name: user.name,
+          id: user._id,
+        };
+        const token = jwt.sign(userSubject, process.env.secret);
         return res
           .header("Authorization", token)
           .status(200)
-          .send({ token, email: user.email, name: user.name });
+          .send({ ...userSubject, token });
       } else {
         return res.status(400).send({ message: "password not match" });
       }
