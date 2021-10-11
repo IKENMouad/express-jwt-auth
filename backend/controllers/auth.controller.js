@@ -31,7 +31,7 @@ const login = async (req, res) => {
       if (isPassMatch) {
         const token = jwt.sign({ id: user._id }, process.env.secret);
         return res
-          .header("auth-token", token)
+          .header("Authorization", token)
           .status(200)
           .send({ token, email: user.email, name: user.name });
       } else {
