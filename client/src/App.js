@@ -1,14 +1,18 @@
+import "../node_modules/bootstrap/scss/bootstrap.scss";
+import "../node_modules/font-awesome/scss/font-awesome.scss";
 import "./App.scss";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "./components/login";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
+import { useState } from "react";
 
 function App() {
-  <Router>
-    <Switch>
-      <Route path="/auth/login" component={Login} />
-    </Switch>
-  </Router>;
-  return <div className="App-header"></div>;
+  const [todo, setTodo] = useState({ id: "", label: "", completed: false });
+  return (
+    <div className="App-header">
+      <TodoForm todo={todo} />
+      <TodoList />
+    </div>
+  );
 }
 
 export default App;

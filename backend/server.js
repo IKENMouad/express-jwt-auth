@@ -19,8 +19,8 @@ app.use(bodyParser.json());
 const authRoutes = require("./routes/auth.route");
 const userRoutes = require("./routes/user.route");
 
-app.use("/auth", authRoutes);
-app.use("/users", userRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 
-const PORT = 3000;
+const PORT = 5000;
 app.listen(PORT, () => console.log("listening on port " + PORT));

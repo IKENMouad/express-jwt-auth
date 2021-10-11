@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 
 const register = async (req, res) => {
   const { email, password, name, mobile } = req.body;
-  if (email && password && mobile && name) {
+  if (email && password && name) {
     const fetchedUser = await User.findOne({ email });
     if (fetchedUser) {
       return res.status(400).send({ message: "user exist with this email " });
@@ -17,6 +17,8 @@ const register = async (req, res) => {
         .status(201)
         .send({ user, message: user._id ? "success" : "error" });
     }
+  } else {
+    return res.status(400).send({ message: "err validation" });
   }
 };
 
@@ -32,7 +34,11 @@ const login = async (req, res) => {
           .header("auth-token", token)
           .status(200)
           .send({ token, email: user.email, name: user.name });
+      } else {
+        return res.status(400).send({ message: "password not match" });
       }
+    } else {
+      return res.status(400).send({ message: "user not found" });
     }
   }
 };
